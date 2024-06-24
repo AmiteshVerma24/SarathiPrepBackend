@@ -1,5 +1,7 @@
 import { Router } from "express";
 import {
+    getQuestion,
+    getQuestions,
     insertQuestion
 } from "../controllers/questions.controller.js"
 
@@ -11,6 +13,26 @@ router.route("/addQuestion").post(async(req, res) => {
         const {title, description, difficulty} = req.body;
         const newQuestion = insertQuestion(title, description, difficulty);
         res.json(newQuestion);
+    } catch (error) {
+        console.log(error)
+    }
+});
+// Get question by ID
+router.route("/getQuestion/:id").get(async(req, res) => {
+    try {
+        console.log(req.body);
+        const { id } = req.params;
+        const newQuestion = await getQuestion(id);
+        res.json(newQuestion);
+    } catch (error) {
+        console.log(error)
+    }
+});
+// Get all questions
+router.route("/getQuestions").get(async(req, res) => {
+    try {
+        const questions = await getQuestions();
+        res.json(questions);
     } catch (error) {
         console.log(error)
     }
