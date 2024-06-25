@@ -1,7 +1,3 @@
-CREATE TABLE todo (
-    id SERIAL PRIMARY KEY,
-    description VARCHAR(255)
-);
 -- Question table
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY,
@@ -11,14 +7,23 @@ CREATE TABLE questions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+-- Driver code generate table
+CREATE TABLE driver_code (
+    id SERIAL PRIMARY KEY,
+    question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
+    function_name TEXT NOT NULL,
+    input_type TEXT NOT NULL,0
+    output_type TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
 -- Test cases table
 CREATE TABLE test_cases (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,0
     question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE,
     input TEXT NOT NULL,
     expected_output TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- Submission table
 CREATE TABLE submissions (

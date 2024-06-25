@@ -4,9 +4,15 @@ app.use(express.json());
 
 
 // ROUTES
-
 import questionRouter from "./routes/questions.routes.js";
+import driverCodeRouter from "./routes/driver_code_generator.routes.js"
+// DEFINE THE ROUTES
+
 app.use("/question", questionRouter);
+app.use("/driverCode", driverCodeRouter);
+app.get("/test", async (req, res) => {
+    res.send("hello");
+  });
 
 app.listen(3000, () => {
     console.log("Server started at port 5432")

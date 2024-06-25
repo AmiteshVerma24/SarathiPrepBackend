@@ -23,6 +23,16 @@ const getQuestion = async (id) => {
     }
 }
 
+const getQuestionName = async (id) => {
+    try {
+        const question = await pool.query("SELECT title FROM questions WHERE id = $1", [id]);
+        return question.rows[0];
+    } catch (error) {
+        console.log("Error fetching question: ", error);
+        throw error;
+    }
+}
+
 const getQuestions = async () => {
     try {
         const queryText = 'SELECT * FROM questions';
@@ -34,7 +44,7 @@ const getQuestions = async () => {
     }
 }
 
-export {insertQuestion, getQuestion, getQuestions}
+export {insertQuestion, getQuestion, getQuestions, getQuestionName}
 
 // CREATE TABLE questions (
 //     id SERIAL PRIMARY KEY,
