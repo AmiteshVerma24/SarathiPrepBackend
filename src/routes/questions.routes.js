@@ -21,7 +21,6 @@ router.route("/addQuestion").post(async(req, res) => {
 // Get question by ID
 router.route("/getQuestion/:id").get(async(req, res) => {
     try {
-        console.log(req.body);
         const { id } = req.params;
         const newQuestion = await getQuestion(id);
         res.json(newQuestion);
@@ -32,7 +31,6 @@ router.route("/getQuestion/:id").get(async(req, res) => {
 // Get question name
 router.route("/getQuestionName/:id").get(async(req, res) => {
     try {
-        console.log(req.body);
         const { id } = req.params;
         const questionName = await getQuestionName(id);
         res.json(questionName);

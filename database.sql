@@ -23,7 +23,7 @@ CREATE TABLE test_cases (
     input TEXT NOT NULL,
     expected_output TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    sample BOOLEAN DEFAULT FALSE
 );
 -- Submission table
 CREATE TABLE submissions (

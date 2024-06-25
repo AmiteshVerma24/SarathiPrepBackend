@@ -20,12 +20,13 @@ router.route("/addDriverCode").post(async(req, res) => {
     }
 });
 // Get question by ID
-router.route("/getDriverCode/:id").get(async(req, res) => {
+router.route("/getDriverCode/:id").post(async(req, res) => {
     try {
         const { id } = req.params;
+        const { language } = req.body;
         const driverCode = await getDriverCode(id);
         const questionName = await getQuestionName(id);
-        const code = generateDriverCode(questionName.title, driverCode.function_name, driverCode.input_type, driverCode.output_type);
+        const code = generateDriverCode(language, questionName.title, driverCode.function_name, driverCode.input_type, driverCode.output_type);
         const json = {code};
         res.json(json);
     } catch (error) {
